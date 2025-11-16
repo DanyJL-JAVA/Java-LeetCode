@@ -1,0 +1,52 @@
+import java.util.*;
+import java.util.stream.*;
+
+
+
+public class CompressString{
+	
+	
+	public static void main(String args[]) {
+		
+		
+		String str = "";
+		//Inplace 
+		StringBuilder strbuild = new StringBuilder();
+		
+		String s = "aaabbbbbbcccccc";
+		
+		char a = s.charAt(0); 
+		int start = 1;
+		strbuild.append(a);
+		
+		for(int i = 1; i < s.length(); i++) {
+			
+			
+			if(a == s.charAt(i)) {
+				
+				start += 1;
+				
+			}
+			else {
+				
+				strbuild.append(start);
+				strbuild.append(s.charAt(i));
+				a = s.charAt(i);
+				start = 1;
+				
+			}
+			
+			
+		}
+		
+		strbuild.append(start);
+//		strbuild.append(s.charAt(i));
+		
+		System.out.println(strbuild.toString());
+		
+		
+	}
+	
+	
+	
+}
