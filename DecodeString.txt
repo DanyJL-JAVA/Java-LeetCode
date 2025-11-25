@@ -1,0 +1,77 @@
+import java.util.*;
+import java.util.stream.*;
+
+
+public class DecodeAString{
+	
+	
+	public static String getDecoded(String s) {
+		
+
+		Stack<StringBuilder> stackBuild = new Stack<StringBuilder>();
+		StringBuilder strBuild = new StringBuilder();
+		Stack<Integer> stackInt = new Stack<Integer>();
+		
+		
+		int num = 0;
+		for(char a : s.toCharArray()) {
+			
+			
+			if(Character.isDigit(a)) {
+				
+				num = (num * 10) + (a - '0');
+				
+			}
+			else if(a == '[') {
+				
+				stackInt.push(num);
+				stackBuild.push(strBuild);
+				
+				num = 0;
+				strBuild = new StringBuilder();
+				
+			}
+			else if(a == ']') {
+				
+				
+				String str = String.valueOf(strBuild);
+				strBuild = new StringBuilder(str.repeat(stackInt.pop()));
+				strBuild = stackBuild.pop().append(strBuild);
+				
+			}
+			else {
+				
+				strBuild.append(a);
+				
+			}
+			
+			
+		}
+		
+		
+		return strBuild.toString();
+		
+	}
+	
+	
+	
+	public static void main(String args[]) {
+		
+		
+		
+		DecodeAString obj = new DecodeAString();
+		
+		// Decode a String 
+		
+
+		String s = "3[a]2[bc]";
+		
+		
+		String str = obj.getDecoded(s);
+		
+		System.out.println(str);
+		
+	}
+	
+	
+}
