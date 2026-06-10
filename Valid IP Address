@@ -1,0 +1,154 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static String checkIpv4(String s, String N) {
+
+		// 5 Condition -> IPV4 -> 192.168.0.1
+
+		// 1
+		if (s.charAt(0) == '.' || s.charAt(s.length() - 1) == '.') {
+
+			return N;
+
+		}
+
+		String[] segments = s.split("\\.");
+
+		// 2
+		if (segments.length == 0 || segments.length > 4) {
+
+			return N;
+
+		}
+
+		for (String segment : segments) {
+
+			Integer num = Integer.valueOf(segment);
+
+			// 3
+			if (num > 255) {
+
+				return N;
+
+			}
+
+			// 4
+			if (segment.length() == 0 || segment.length() > 3 || segment.charAt(0) == '0' && segment.length() > 1) {
+
+				return N;
+			}
+
+			for (int i = 0; i < segment.length(); i++) {
+
+				char a = segment.charAt(i);
+
+				// 5
+				if (a < '0' || a > '9') {
+
+					return N;
+
+				}
+
+			}
+
+		}
+
+		return "IPV4";
+
+	}
+
+	////////////// 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+	public static String checkIpv6(String s, String N) {
+
+		// 4 Condition -> IPV6 -> 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+		// 1
+		if (s.charAt(0) == ':' || s.charAt(s.length() - 1) == ':') {
+
+			return N;
+
+		}
+
+		String[] segments = s.split("\\:");
+
+		// 2
+		if (segments.length == 0 || segments.length > 8) {
+
+			return N;
+
+		}
+
+		for (String segment : segments) {
+
+			// 3
+			if (segment.length() == 0 || segment.length() > 4) {
+
+				return N;
+			}
+
+			for (int i = 0; i < segment.length(); i++) {
+
+				char a = segment.charAt(i);
+
+				// 4
+				if (!(a >= '0' && a <= '9') && !(a >= 'a' && a <= 'f') && !(a >= 'A' && a <= 'F')) {
+
+					return N;
+
+				}
+
+			}
+
+		}
+
+		return "IPV6";
+
+	}
+
+	//////////////
+
+	public static String checkValidIp(String s) {
+
+		String N = "Neither";
+
+		if (s == null || s.length() == 0 || s.isEmpty() == true) {
+
+			return N;
+
+		}
+
+		if (s.contains(".")) {
+
+			return checkIpv4(s, N);
+
+		} else if (s.contains(":")) {
+
+			return checkIpv6(s, N);
+
+		} else {
+
+			return N;
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		// IPV4 --> 192.168.0.1
+		// IPV6 --> 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+		// Neither --> 256.256.256.256
+		String s = "192.168.0.1";
+
+		String result = obj.checkValidIp(s);
+
+		System.out.println(result);
+
+	}
+
+}
