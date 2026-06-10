@@ -1,0 +1,48 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer a = 20;
+		Integer b = 30;
+
+		Integer temp = a;
+		a = b;
+		b = temp;
+
+		System.out.println("a =>" + a);
+		System.out.println("b =>" + b);
+
+	}
+
+}
+
+////////////// ANOTHER WAY /////////////////////////
+
+//
+//import java.util.*;
+//import java.util.stream.*;
+//
+//public class Main {
+//
+//	public static void main(String[] args) {
+//
+//		Main obj = new Main();
+//
+//		Integer a = 20;
+//		Integer b = 30;
+//
+//		a = a + b;
+//		b = a - b;
+//		a = a - b;
+//
+//		System.out.println("a =>" + a);
+//		System.out.println("b =>" + b);
+//
+//	}
+//
+//}
