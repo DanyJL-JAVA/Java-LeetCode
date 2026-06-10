@@ -1,0 +1,53 @@
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.*;
+
+public class Main {
+
+	public static boolean WordBreak(String s, String[] arr) {
+
+		StringJoiner strJoin = new StringJoiner("|", "(", ")*");
+
+		for (String a : arr) {
+
+			strJoin.add(a);
+
+		}
+
+		Pattern pattern = Pattern.compile(String.valueOf(strJoin));
+		Matcher matcher = pattern.matcher(s);
+
+		if (matcher.matches()) {
+
+			return true;
+
+		}
+
+		return false;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+//		String s = "leetcode";
+//		String arr[] = { "leet", "code" };
+		// Output: true
+
+		String s = "applepenapple";
+		String arr[] = { "apple", "pen" };
+//		// Output: true
+
+//		String s = "catsandog";
+//		String arr[] = {"cats","dog","sand","and","cat"};
+		// Output: false
+
+		boolean result = obj.WordBreak(s, arr);
+
+		System.out.println(result);
+
+	}
+
+}
