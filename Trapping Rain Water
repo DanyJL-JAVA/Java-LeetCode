@@ -1,0 +1,103 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void TwoSum(Integer[] arr, Integer target) {
+
+		List<Integer> arrlst = new ArrayList<Integer>();
+
+		for (int i = 0; i < arr.length; i++) {
+
+			Integer r = target - arr[i];
+
+			if (arrlst.contains(r)) {
+
+				System.out.println(
+						arr[i] + "[Index = " + i + "] + " + r + "[Index = " + arrlst.indexOf(r) + "] = " + target);
+
+			}
+
+			arrlst.add(arr[i]);
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+        //INPUT :
+		Integer[] arr = { 8, 3, 24, 10, 78, 6, 3, 8, 9 };
+		Integer target = 16;
+		
+		//OUTPUT :
+		//6[Index = 5] + 10[Index = 3] = 16
+		//8[Index = 7] + 8[Index = 0] = 16
+
+		obj.TwoSum(arr, target);
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static Integer TrappingRainWater(Integer[] arr) {
+
+		Integer left[] = new Integer[arr.length];
+		Integer right[] = new Integer[arr.length];
+
+		Integer min = Integer.MAX_VALUE;
+		Integer max = Integer.MIN_VALUE;
+
+		for (int i = 0; i < arr.length; i++) {
+
+			max = Math.max(max, arr[i]);
+			left[i] = max;
+
+		}
+
+		max = -1;
+		for (int i = arr.length - 1; i >= 0; i--) {
+
+			max = Math.max(max, arr[i]);
+			right[i] = max;
+
+		}
+
+		Integer result = 0;
+		for (int i = 0; i < arr.length; i++) {
+
+			result += Math.min(left[i], right[i]) - arr[i];
+
+		}
+
+		return result;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		// Trapping Rain Water
+
+		// Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+		// Output: 6
+
+		// Input: height = [4,2,0,3,2,5]
+		// Output: 9
+
+		Integer[] arr = {0,1,0,2,1,0,1,3,2,1,2,1 };
+
+		Integer result = obj.TrappingRainWater(arr);
+
+		System.out.println(result);
+
+	}
+
+}
+
+	}
+
+}
