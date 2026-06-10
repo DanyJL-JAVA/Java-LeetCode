@@ -1,0 +1,132 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+
+/*Node*/
+
+class Node {
+
+	public int key; // Public --> Access modifier to be used globally
+	public char value;
+
+	public Node(int key, char value) {
+
+		this.key = key;
+		this.value = value;
+
+	}
+
+}
+
+/* Node */
+
+/* LRUCache */
+
+class LRUCache {
+
+	private int capacity; // Maintains two Capacity
+	private Set<Node> cache = new LinkedHashSet<Node>(); // Maintains Order
+	private Map<Integer, Node> KeyToNode = new HashMap<>(); // {1,{1,A}} // Just Storing Purpose not need Doubly Linked
+															// Mechanism
+
+	// 1
+	public LRUCache(int capacity) { // Constructor
+
+		this.capacity = capacity;
+
+	}
+
+	//
+
+	// 2
+	public int get(int key) {
+
+		if (!KeyToNode.containsKey(key)) {
+
+			return '*';
+
+		}
+
+		Node node = KeyToNode.get(key); // the value inside the Map putting into --> object of Node --> Which has key
+										// and value
+
+		cache.remove(node); // this cache step is for removing the node place if that is not in the first place 
+		cache.add(node); // and Forcing the the Node to be in First Place by .add() method -> Works in the mechanism of FIFO.
+		return node.value;
+
+	}
+	//
+
+	// 3
+	public void put(int key, char value) {
+
+		if (KeyToNode.containsKey(key)) { // Updating the Value of an Key, if the given Inut Key is already declared for
+											// any node Present inside the Key. This condition is for updating the hashmap (i.e) -> KeytoNode.
+
+			KeyToNode.get(key).value = value; // updating the value inside hashmap (i.e) -> KeytoNode.
+			get(key); // update the Position in the cache
+			return;
+
+		}
+
+		//
+
+		// if already the cache is fullm with capacity of Two = 2
+		if (cache.size() == capacity) {
+
+			Node lastNode = cache.iterator().next(); // Get the least recently used node.
+			cache.remove(lastNode);
+			KeyToNode.remove(lastNode.key);
+		}
+		//
+
+
+		// This below is an Common Insertion od values.
+		Node node = new Node(key, value);
+		cache.add(node);
+		KeyToNode.put(key, node);
+
+	}
+
+}
+
+/* LRUCache */
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		LRUCache lruCache = new LRUCache(2); // Capacity decalared to 2.
+
+		lruCache.put(1, 'A'); // cache is {1 = A}
+		lruCache.put(2, 'B'); // cache is {1 = A, 2 = B}
+		System.out.print("1:" + (char) (lruCache.get(1)) + " | "); // returns 1
+
+		lruCache.put(3, 'C'); /// LRU key was 2, evicts key 2, cache is {1 = A, 3 = C}
+		System.out.print("2 :" + (char) (lruCache.get(2)) + " | "); // returns - 1 (not found)
+
+		lruCache.put(4, 'D'); // LRU key was 1, evicts key 1, cache is {4 = D, 3 = C}
+		System.out.print("1 :" + (char) (lruCache.get(1)) + " | "); // returns - 1 (not found)
+		System.out.print("3 :" + (char) (lruCache.get(3)) + " | "); // returns 3
+		System.out.print("4 :" + (char) (lruCache.get(4)) + " | "); // returns 4
+
+		// Input =
+		// ["LRUCache","put","put","get","put","get","put","get","get","get"]
+		// [2], [1,A], [2,B], [1],[3,C], [2], [4,D], [1] , [3] , [4] ]
+
+		// MRU //LRU
+//		[1,a]  [2,b]
+//		[3,c]  [1,a] -> 1,a
+//		[3,c]  [1,a] -> [1,a] [2,*]
+//		[4,D]  [3,c] -> [1,a][2,*][1,*]
+//		[3,C]  [4,D] -> [1,a][2,*][1,*][3,C]
+//		[4,D]  [3,C] -> [1,a][2,*][1,*][3,C][4,D]	
+
+		// output = 1:A | 2 :* | 1 :* | 3 :C | 4 :D |
+
+	}
+
+}
