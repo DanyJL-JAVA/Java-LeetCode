@@ -1,0 +1,43 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void TwoSum(Integer[] arr, Integer target) {
+
+		List<Integer> arrlst = new ArrayList<Integer>();
+
+		for (int i = 0; i < arr.length; i++) {
+
+			Integer r = target - arr[i];
+
+			if (arrlst.contains(r)) {
+
+				System.out.println(
+						arr[i] + "[Index = " + i + "] + " + r + "[Index = " + arrlst.indexOf(r) + "] = " + target);
+
+			}
+
+			arrlst.add(arr[i]);
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+        //INPUT :
+		Integer[] arr = { 8, 3, 24, 10, 78, 6, 3, 8, 9 };
+		Integer target = 16;
+		
+		//OUTPUT :
+		//6[Index = 5] + 10[Index = 3] = 16
+		//8[Index = 7] + 8[Index = 0] = 16
+
+		obj.TwoSum(arr, target);
+
+	}
+
+}
