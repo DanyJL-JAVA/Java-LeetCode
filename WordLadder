@@ -1,0 +1,85 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+public class Main {
+
+	public static Integer wordLadder(Set<String> beginSet, String endWord, Set<String> lstSet, Integer distance) {
+
+		Set<String> ReachableSet = new HashSet<String>();
+
+		// 3 Condition
+
+		// 1
+		lstSet.removeAll(beginSet);
+
+		// 2
+		if (!lstSet.contains(endWord)) {
+
+			return 0;
+
+		}
+
+		for (String s : beginSet) {
+
+			for (int i = 0; i < s.length(); i++) {
+
+				char c[] = s.toCharArray();
+
+				for (char a = 'a'; a <= 'z'; a++) {
+
+					c[i] = a;
+					String str = new String(c);
+
+					if (lstSet.contains(str)) {
+
+						ReachableSet.add(str);
+
+						if (str.equals(endWord)) {
+
+							return distance + 1;
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		distance++;
+
+		if (ReachableSet.isEmpty()) {
+
+			return 0;
+		}
+
+		return wordLadder(ReachableSet, endWord, lstSet, distance);
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String beginWord = "hit";
+		String endWord = "cog";
+		List<String> lst = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog"); // output : 5
+
+		Set<String> beginSet = new HashSet<String>();
+		beginSet.add(beginWord);
+		Set<String> lstSet = new HashSet<String>(lst);
+
+		Integer result = obj.wordLadder(beginSet, endWord, lstSet, 1);
+
+		System.out.println(result);
+
+	}
+
+}
