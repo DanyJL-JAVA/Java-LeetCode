@@ -1,0 +1,165 @@
+
+		if (ReachableSet.isEmpty()) {
+
+			return 0;
+		}
+
+		return wordLadder(ReachableSet, endWord, lstSet, distance);
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String beginWord = "hit";
+		String endWord = "cog";
+		List<String> lst = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog"); // output : 5
+
+		Set<String> beginSet = new HashSet<String>();
+		beginSet.add(beginWord);
+		Set<String> lstSet = new HashSet<String>(lst);
+
+		Integer result = obj.wordLadder(beginSet, endWord, lstSet, 1);
+
+		System.out.println(result);
+
+	}
+
+}
+import java.util.*;
+import java.util.stream.*;
+import java.util.Iterator;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.sql.*;
+
+public class Main {
+
+	public static boolean checkValidPara(String s) {
+
+		Stack<Character> stack = new Stack<Character>();
+
+		for (char a : s.toCharArray()) {
+
+			if (a == '[' || a == '(' || a == '{') {
+
+				stack.push(a);
+
+			}
+			//
+			else if (a == ']') {
+
+				if (!stack.isEmpty() && stack.peek() == '[') {
+
+					stack.pop();
+
+				} else {
+
+					return false;
+				}
+
+			}
+			//
+			else if (a == ')') {
+
+				if (!stack.isEmpty() && stack.peek() == '(') {
+
+					stack.pop();
+
+				} else {
+					return false;
+				}
+
+			}
+			//
+			else if (a == '}') {
+
+				if (!stack.isEmpty() && stack.peek() == '{') {
+
+					stack.pop();
+import java.util.*;
+import java.util.stream.*;
+import java.util.Iterator;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.sql.*;
+
+public class Main {
+
+	public static boolean checkValidPara(String s) {
+
+		Stack<Character> stack = new Stack<Character>();
+
+		for (char a : s.toCharArray()) {
+
+			if (a == '[' || a == '(' || a == '{') {
+
+				stack.push(a);
+
+			}
+			//
+			else if (a == ']') {
+
+				if (!stack.isEmpty() && stack.peek() == '[') {
+
+					stack.pop();
+
+				} else {
+
+					return false;
+				}
+
+			}
+			//
+			else if (a == ')') {
+
+				if (!stack.isEmpty() && stack.peek() == '(') {
+
+					stack.pop();
+
+				} else {
+					return false;
+				}
+
+			}
+			//
+			else if (a == '}') {
+
+				if (!stack.isEmpty() && stack.peek() == '{') {
+
+					stack.pop();
+
+				} else {
+					return false;
+				}
+
+			} else {
+
+				return false;
+			}
+
+		}
+
+		return stack.isEmpty();
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String s = "[]{}()"; // True
+//		String s = "[{]}()"; // false
+
+		boolean result = obj.checkValidPara(s);
+
+		System.out.println(result);
+
+	}
+
+}
