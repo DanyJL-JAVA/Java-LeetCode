@@ -1,0 +1,63 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static String getCheck(Integer left, Integer right, String s) {
+
+		while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+
+			left--;
+			right++;
+
+		}
+
+		return s.substring(left + 1, right);
+
+	}
+
+	public static String longestPalindromicSubString(String s) {
+
+		String str = "";
+
+		//
+		for (int i = 0; i < s.length(); i++) {
+
+			if (str.length() < getCheck(i, i, s).length()) {
+
+				str = getCheck(i, i, s);
+
+			}
+
+		}
+
+		//
+
+		for (int i = 0; i < s.length(); i++) {
+
+			if (str.length() < getCheck(i, i + 1, s).length()) {
+
+				str = getCheck(i, i + 1, s);
+			}
+
+		}
+
+		return str;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String s = "pbpotopmkllkmpocelnmlclmrl"; // output = OPMKLLKMPO
+
+		s = s.replaceAll("\\s+", "").toUpperCase();
+
+		String result = obj.longestPalindromicSubString(s);
+
+		System.out.println(result);
+
+	}
+
+}
