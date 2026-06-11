@@ -1,0 +1,33 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static Integer[] MissingVal(Integer[] arr) {
+
+		Integer minVal = Arrays.stream(arr).min(Integer::compare).get();
+		Integer maxVal = Arrays.stream(arr).max(Integer::compare).get();
+
+		List<Integer> arrlst = Arrays.stream(arr).collect(Collectors.toList());
+
+		Integer[] array = IntStream.rangeClosed(minVal, maxVal).boxed().filter(n -> !arrlst.contains(n))
+				.toArray(Integer[]::new);
+
+		return array;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer arr[] = { 1, 3, 8, 4, 9, 11, 6, 5, 7 };
+		// output : [2, 10]
+
+		Integer[] array = obj.MissingVal(arr);
+
+		System.out.println(Arrays.toString(array));
+
+	}
+
+}
