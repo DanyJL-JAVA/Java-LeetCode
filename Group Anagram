@@ -1,0 +1,81 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static boolean IsPrime(Integer num) {
+
+		if (num < 2) {
+
+			return false;
+
+		}
+
+		for (int i = 2; i <= Math.sqrt(num); i++) {
+
+			if (num % i == 0) {
+
+				return false;
+			}
+
+		}
+
+		return true;
+
+	}
+
+	public static List<List<String>> grpAnagram(String[] arr) {
+
+		List<List<String>> lst = new ArrayList<List<String>>();
+		Map<Integer, List<String>> hashmap = new HashMap<Integer, List<String>>();
+
+		Integer[] PrimeNumbers = IntStream.rangeClosed(2, 101).boxed().filter(Main::IsPrime).toArray(Integer[]::new);
+
+		// System.out.println(Arrays.toString(PrimeNumbers));
+
+		for (String s : arr) {
+
+			Integer Product = 1;
+
+			for (int i = 0; i < s.length(); i++) {
+
+				char a = s.charAt(i);
+
+				Product *= PrimeNumbers[a - 'a'];
+
+			}
+
+			if (!hashmap.containsKey(Product)) {
+
+				hashmap.put(Product, new ArrayList<String>());
+
+			}
+
+			hashmap.get(Product).add(s);
+
+		}
+
+		for (List<String> a : hashmap.values()) {
+
+			lst.add(a);
+
+		}
+
+		return lst;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String arr[] = { "eat", "tea", "tan", "ate", "nat", "bat" };
+		// result : [[eat, tea, ate], [tan, nat], [bat]]
+
+		List<List<String>> result = obj.grpAnagram(arr);
+
+		System.out.println(result);
+
+	}
+
+}
