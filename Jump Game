@@ -1,0 +1,38 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static boolean JumpGame(Integer[] arr) {
+
+		Integer r = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+
+			if (i > r) {
+
+				return false;
+			}
+
+			r = Math.max(r, arr[i] + i);
+
+		}
+
+		return true;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		 Integer arr[] = {2,3,1,1,4}; // true
+//		Integer arr[] = { 3, 2, 1, 0, 4 }; // output : false
+
+		boolean result = obj.JumpGame(arr);
+
+		System.out.println(result);
+
+	}
+
+}
