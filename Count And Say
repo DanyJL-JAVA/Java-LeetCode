@@ -1,0 +1,55 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static String CountAndSay(Integer num) {
+
+		String Curr = "1";
+
+		for (int i = 1; i < num; i++) {
+
+			int k = 0;
+			Integer count = 1;
+			String temp = "";
+
+			while (k < Curr.length()) {
+
+				while (k + 1 < Curr.length() && Curr.charAt(k) == Curr.charAt(k + 1)) {
+
+					count++;
+					k++;
+				}
+
+				temp += Integer.toString(count) + Curr.charAt(k);
+				k++;
+			}
+
+			Curr = temp;
+
+		}
+
+		return Curr;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer num = 4;
+		// OUPUT : 1211
+
+		// FYI
+//		1 -> 1
+//		2 -> 11
+//		3 -> 21
+//		4 -> 1211
+
+		String result = obj.CountAndSay(num);
+
+		System.out.println(result);
+
+	}
+
+}
