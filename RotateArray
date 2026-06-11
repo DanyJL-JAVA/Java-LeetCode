@@ -1,0 +1,39 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void rotateArray(Integer start, Integer end, Integer[] arr, Integer target) {
+
+		while (start < end) {
+
+			Integer temp = arr[start];
+			arr[start] = arr[end];
+			arr[end] = temp;
+
+			start++;
+			end--;
+
+		}
+
+		System.out.println(Arrays.toString(arr));
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer[] arr = { 23, 445, 2, 1, 56, 6, 73, 24, 56 };
+
+		Integer target = 4; // [6, 73, 24, 56, 23, 445, 2, 1, 56] 
+//		Integer target = 3; // [73, 24, 56, 23, 445, 2, 1, 56, 6]
+
+
+		obj.rotateArray(0, arr.length - 1, arr, target);
+		obj.rotateArray(0, target - 1, arr, target);
+		obj.rotateArray(target, arr.length - 1, arr, target);
+
+	}
+
+}
