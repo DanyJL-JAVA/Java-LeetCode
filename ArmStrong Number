@@ -1,0 +1,47 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static boolean ArmStrong(String s) {
+
+		Integer len = s.length();
+		Integer sum = 0;
+
+		for (char a : s.toCharArray()) {
+
+			if (Character.isDigit(a)) {
+
+				Integer num = a - '0'; // Converting char to Integer value
+
+//				System.out.println(num);
+
+				double db = Math.pow(num, len);
+
+				int n = (int) Math.round(db); // (int) TypeCasting only will support in this.
+
+				sum += n;
+
+			}
+
+		}
+
+		System.out.println(sum);
+
+		return String.valueOf(sum).equals(s);
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String s = "153";
+
+		boolean result = obj.ArmStrong(s);
+
+		System.out.println(result);
+
+	}
+
+}
