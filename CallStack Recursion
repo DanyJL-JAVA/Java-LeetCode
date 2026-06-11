@@ -1,0 +1,76 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void CallStackRecursion(Integer num) {
+
+		if (num == 0) {
+
+			return;
+		}
+
+		num = num - 1;
+
+		CallStackRecursion(num);
+		System.out.print(num+",");
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		// Input
+		Integer num = 5;
+
+		// Output: 
+		// 4,3,2,1,0,
+		// 0,1,2,3,4,
+		
+		obj.CallStackRecursion(num);
+
+	}
+
+}
+
+
+// CallStackRecursion Sum
+
+//import java.util.*;
+//import java.util.stream.*;
+//
+//public class Main {
+//
+//	public static Integer CallStackRecursion(Integer num) {
+//
+//		if (num == 0) {
+//
+//			return 1;
+//		}
+//
+//		return num * CallStackRecursion(num - 1);
+//
+//	}
+//
+//	public static void main(String[] args) {
+//
+//		Main obj = new Main();
+//
+//		// Input
+//		Integer num = 5;
+//
+//		// Output numbers:
+//		// 4,3,2,1,0,
+//		// 0,1,2,3,4,
+//
+//		// Output Sum :
+//		// 120
+//
+//		Integer result = obj.CallStackRecursion(num);
+//
+//		System.out.println(result);
+//
+//	}
+//
+//}
