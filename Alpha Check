@@ -1,0 +1,28 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static boolean alphaCheck(String s) {
+
+		System.out.println(s.replaceAll("\\s+", "").replaceAll("[^a-z]", "").replaceAll("(.)(?=.*\\1)", "").chars()
+				.mapToObj(c -> (char) c).sorted(Comparator.naturalOrder()).map(Object::toString)
+				.map(String::toUpperCase).collect(Collectors.joining(" ")));
+
+		return s.replaceAll("\\s+", "").replaceAll("[^a-z]", "").replaceAll("(.)(?=.*\\1)", "").length() == 26;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String s = "fdnlsalbdc3@$2aubcd85efwghij@$klmn2x329*(*$opqyrst4l2vzlbrfh8094kjfg";
+
+		boolean result = obj.alphaCheck(s);
+
+		System.out.println(result);
+
+	}
+
+}
