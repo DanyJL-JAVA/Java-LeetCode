@@ -1,0 +1,53 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		List<String> arrlst = new ArrayList<String>(
+				Arrays.asList("sunday", "tuesday", "wednesday", "thursday", "friday"));
+
+		// Note : to convert to Array
+
+		String[] arr = arrlst.toArray(new String[arrlst.size()]);
+
+//		System.out.println(Arrays.toString(arr)); // [sunday, tuesday, wednesday, thursday, friday]
+
+		// Note : to convert to Array
+
+		Iterator Itr = arrlst.iterator();
+
+		System.out.println("************List Iteration*********************");
+		while (Itr.hasNext()) {
+
+			String str = (String) Itr.next();
+			// generally after Convrting to Iterator the value will be Converted to Objects"
+			// So, We need to "Type Caste" the data, with its datatype was in before (i.e)
+			// String str = (String) Itr.next();
+
+			System.out.println(str);
+
+		}
+
+		/////////////////////////////////////////
+
+		System.out.println("************HashMap Iteration*********************");
+
+		Map<Character, String> hashmap = new HashMap<Character, String>();
+
+		hashmap.put('M', "Monday");
+		hashmap.put('T', "Tuesday");
+		hashmap.put('W', "Wednesday");
+		hashmap.put('H', "Thursday");
+		hashmap.put('F', "Friday");
+
+		for (Map.Entry<Character, String> hash : hashmap.entrySet()) {
+
+			System.out.println(hash.getKey() + "==>" + hash.getValue());
+
+		}
+
+	}
+
+}
