@@ -1,0 +1,49 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static Integer mostWaterinContainer(Integer[] arr) {
+
+		// width * height
+
+		Integer start = 0;
+		Integer end = arr.length - 1;
+
+		Integer result = 0;
+
+		while (start < end) {
+
+			Integer width = (end - start);
+			Integer height = Math.min(arr[start], arr[end]);
+
+			result = Math.max(result, width * height);
+
+			if (arr[start] < arr[end]) {
+
+				start++;
+
+			} else {
+
+				end--;
+			}
+
+		}
+
+		return result;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer[] arr = { 1, 8, 6, 2, 5, 4, 8, 3, 7 }; // 49
+
+		Integer result = obj.mostWaterinContainer(arr);
+
+		System.out.println(result);
+
+	}
+
+}
