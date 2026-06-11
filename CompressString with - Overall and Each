@@ -1,0 +1,100 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static String compressString(String s) {
+
+		StringBuilder strBuild = new StringBuilder();
+
+		Map<Character, Integer> hashmap = new HashMap<Character, Integer>();
+
+		for (int i = 0; i < s.length(); i++) {
+
+			char a = s.charAt(i);
+
+			if (!hashmap.containsKey(a)) {
+
+				hashmap.put(a, 0);
+
+			}
+
+			hashmap.put(a, hashmap.get(a) + 1);
+
+		}
+
+		for (Map.Entry<Character, Integer> hash : hashmap.entrySet()) {
+
+			strBuild.append(hash.getKey()).append(hash.getValue());
+
+		}
+
+		return strBuild.toString();
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		String s = "aaabbbbbbcccbbccc";
+		// output : a3b8c6
+
+		String result = obj.compressString(s);
+
+		System.out.println(result);
+
+	}
+
+}
+
+/////////////////////////////////////////////
+
+
+//import java.util.*;
+//import java.util.stream.*;
+//
+//public class Main {
+//
+//	public static String compressString(String s) {
+//
+//		String str = "";
+//		Integer count = 1;
+//
+//		StringBuilder strBuild = new StringBuilder();
+//
+//		char a = s.charAt(0);
+//		for (int i = 1; i < s.length(); i++) {
+//
+//			if (a == s.charAt(i)) {
+//
+//				count++;
+//
+//			} else {
+//
+//				strBuild.append(a).append(count);
+//				count = 1;
+//				a = s.charAt(i);
+//
+//			}
+//
+//		}
+//
+//		return strBuild.append(a).append(count).toString();
+//
+//	}
+//
+//	public static void main(String[] args) {
+//
+//		Main obj = new Main();
+//
+//		String s = "aaabbbbbbcccbbccc";
+//		//output : a3b6c3b2c3
+//
+//		String result = obj.compressString(s);
+//
+//		System.out.println(result);
+//
+//	}
+//
+//}
