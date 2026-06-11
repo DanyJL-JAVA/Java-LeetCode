@@ -1,0 +1,91 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void sprialMatrix(Integer[][] arr) {
+
+		Integer rowStart = 0;
+		Integer rowEnd = arr.length;
+		Integer columnStart = 0;
+		Integer columnEnd = arr[0].length;
+
+		while (rowStart < rowEnd && columnStart < columnEnd) {
+
+			// left to right
+
+			for (int i = columnStart; i < columnEnd; i++) {
+
+				System.out.print(arr[rowStart][i] + " ");
+
+			}
+
+			rowStart += 1;
+
+			// TOP to bottom
+			for (int i = rowStart; i < rowEnd; i++) {
+
+				System.out.print(arr[i][columnEnd - 1] + " ");
+
+			}
+
+			columnEnd -= 1;
+			
+			// right to left
+			
+			for(int i = columnEnd - 1; i >= columnStart; i--) {
+				
+				System.out.print(arr[rowEnd - 1][i]+" ");
+				
+			}
+			
+			rowEnd -= 1;
+			
+			// bottom to top
+			
+			for(int i = rowEnd - 1; i >= rowStart; i--) {
+				
+				
+				System.out.print(arr[i][columnStart]+" ");
+				
+			}
+			
+			columnStart += 1;
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+//		Integer arr[][] = {
+//				{1,  2,  3,  4},
+//				{14, 15, 16, 5},
+//				{13, 20, 17, 6},
+//				{12, 19, 18, 7},
+//				{11, 10, 9,  8}
+//				
+//		};
+
+		
+		// INPUT :
+		Integer arr[][] = { 
+				{ 1, 2, 3, 4 }, 
+				{ 14, 15, 16, 5 }, 
+				{ 13, 20, 17, 6 }, 
+				{ 12, 19, 18, 7 }, 
+				{ 11, 10, 9, 8 }
+
+		};
+		
+		
+		// OUTPUT :
+		//1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+
+		obj.sprialMatrix(arr);
+
+	}
+
+}
