@@ -1,0 +1,67 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Integer arr[] = { 43, 5, 0, 76, 4, 7, 0, 8, 3, 88, 48, 24 };
+		// OutPut : [43, 5, 76, 4, 7, 8, 3, 88, 48, 24, 0, 0]
+
+		Integer[] array = Stream.concat(Arrays.stream(arr).filter(n -> n != 0), Arrays.stream(arr).filter(n -> n == 0))
+				.toArray(Integer[]::new);
+
+		System.out.println(Arrays.toString(array));
+
+	}
+
+}
+
+///////////////////////
+
+//Normal
+
+//import java.util.*;
+//import java.util.stream.*;
+//
+//public class Main {
+//
+//	public static Integer[] moveAllZeros(Integer[] arr) {
+//
+//		Integer start = 0;
+//
+//		for (int i = 0; i < arr.length; i++) {
+//
+//			if (arr[i] != 0) {
+//
+//				arr[start] = arr[i];
+//				start++;
+//			}
+//
+//		}
+//
+//		for (int i = start; i < arr.length; i++) {
+//
+//			arr[i] = 0;
+//
+//		}
+//
+//		return arr;
+//
+//	}
+//
+//	public static void main(String[] args) {
+//
+//		Main obj = new Main();
+//
+//		Integer arr[] = { 43, 5, 0, 76, 4, 7, 0, 8, 3, 88, 48, 24 };
+//		// OutPut : [43, 5, 76, 4, 7, 8, 3, 88, 48, 24, 0, 0]
+//
+//
+//		Integer[] array = obj.moveAllZeros(arr);
+//
+//		System.out.println(Arrays.toString(array));
+//
+//	}
+//
+//}
