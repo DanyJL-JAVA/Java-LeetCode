@@ -1,0 +1,46 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+public class Main {
+
+	public static Integer[] InsertionSort(Integer[] arr) {
+
+		for (int i = 1; i < arr.length; i++) {
+
+			int a = arr[i];
+			int j = i - 1;
+
+			while (j >= 0 && a <= arr[j]) {
+
+				arr[j + 1] = arr[j];
+				j = j - 1;
+			}
+
+			arr[j + 1] = a;
+
+		}
+
+		return arr;
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		List<Integer> arrlst = Arrays.asList(34, 22, 1, 6, 36, 7);
+
+		Integer[] arr = arrlst.toArray(new Integer[arrlst.size()]);
+
+		Integer[] array = obj.InsertionSort(arr);
+
+		System.out.println(Arrays.toString(array));
+
+	}
+
+}
