@@ -1,0 +1,78 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static void DimondPattern(Integer num) {
+
+		// TOP
+		for (int i = 1; i < num; i++) {
+
+			for (int j = 1; j < (2 * num) - i; j++) {
+
+				System.out.print(" ");
+
+			}
+
+			for (int k = 1; k < (2 * i); k++) {
+
+				System.out.print("*");
+
+			}
+
+			System.out.println(" ");
+
+		}
+		// TOP
+
+		// bottom
+		for (int i = num; i >= 1; i--) {
+
+			for (int j = 1; j < (2 * num) - i; j++) {
+
+				System.out.print(" ");
+
+			}
+
+			for (int k = 1; k < (2 * i); k++) {
+
+				System.out.print("*");
+
+			}
+
+			System.out.println(" ");
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer num = 8;
+
+		obj.DimondPattern(num);
+
+	}
+	
+	//output
+//    * 
+//   *** 
+//  ***** 
+// ******* 
+//********* 
+//*********** 
+//************* 
+//*************** 
+//************* 
+//*********** 
+//********* 
+// ******* 
+//  ***** 
+//   *** 
+//    * 
+
+
+
+}
