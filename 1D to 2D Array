@@ -1,0 +1,54 @@
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+
+	public static Integer[][] TwoDArray(Integer[] arr, Integer m, Integer n) {
+
+		if (m * n != arr.length) {
+
+			return new Integer[][] {};
+
+		}
+
+		Integer[][] array = new Integer[m][n];
+		Integer count = 0;
+
+		Integer row = 0;
+		Integer column = 0;
+
+		while (row < m) {
+
+			column = 0;
+			while (column < n) {
+
+				array[row][column] = arr[count++];
+				column++;
+			}
+
+			row++;
+
+		}
+
+		return array; // Empty 2D Array
+
+	}
+
+	public static void main(String[] args) {
+
+		Main obj = new Main();
+
+		Integer[] arr = { 2, 1, 3, 5};
+
+		Integer m = 2;
+		Integer n = 2;
+
+		// 1D to 2D Array
+
+		Integer[][] array = obj.TwoDArray(arr, m, n);
+
+		System.out.println(Arrays.deepToString(array));
+
+	}
+
+}
