@@ -1,0 +1,28 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.function.Function;
+import java.util.Queue;
+import java.util.Iterator;
+import java.sql.*;
+import java.util.LinkedList;
+import java.util.Map.Entry;
+
+public class Main {
+
+
+	public static void main(String[] args) {
+
+		String s = "hello world";
+		
+		StringBuilder strBuild = new StringBuilder(s);
+		
+		strBuild.replace(0, 2, "He").append("\s 's");
+		
+		
+		System.out.println(strBuild.toString());
+		
+		
+	}
+
+}
