@@ -1,0 +1,73 @@
+import com.sun.security.jgss.GSSUtil;
+
+import java.awt.color.ICC_ColorSpace;
+import java.util.*;
+import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+
+public class Main {
+
+    public static String LongestPrefix(String[] arr){
+
+
+        Arrays.sort(arr);
+
+        String s1 = arr[0];
+        String s2 = arr[arr.length - 1];
+
+        String str = "";
+
+        for(int i = 0; i < s1.length(); i++){
+
+            if(s1.charAt(i) == s2.charAt(i)){
+
+                str += s1.charAt(i);
+
+            }
+            else{
+                break;
+            }
+
+
+        }
+
+        return str;
+
+    }
+
+    public static void main(String[] args) {
+
+        Main obj =  new Main();
+
+
+//        String arr[] = {"geeksforgeeks", "geeks", "geek", "geezer"};
+//        Output: “gee”
+
+
+        String arr[] = {"apple", "ape", "april"};
+//        Output : “ap”
+
+
+//        String arr[] = {"hello", "world"};
+//        Output: “”
+
+
+        String result = obj.LongestPrefix(arr);
+
+        System.out.println(result);
+
+
+
+
+    }
+
+}
+
