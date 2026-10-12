@@ -5,6 +5,7 @@ public class Main {
 
 	public static String getCheck(Integer left, Integer right, String s) {
 
+//* Keep in Mind >= "equal" symbol is Must
 		while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
 
 			left--;
