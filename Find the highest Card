@@ -1,0 +1,62 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Iterator;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+
+public class Main {
+
+
+    private static final List<String> Rank = Arrays.asList("2","3","4","5","6","7","8","9","10","J","Q","K","A");
+
+    private static final List<String> Suits =  Arrays.asList("H","D","C","S");
+
+
+    public static String FindTheHighestCard(List<String> arrlst){
+
+
+        return arrlst.stream().max(Comparator.comparingInt((String s) -> getRankCheck(s)).thenComparingInt(Main::SuitCheck))
+                .orElse(arrlst.get(0));
+
+    }
+
+    public static Integer getRankCheck(String s){
+
+
+        String a = s.split("-")[0];
+
+        return Rank.indexOf(a);
+
+
+    }
+
+    public static Integer SuitCheck(String s){
+
+        String a = s.split("-")[1];
+
+        return Suits.indexOf(a);
+
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+
+        Main obj = new Main();
+
+
+        System.out.println(obj.FindTheHighestCard(Arrays.asList("5-H","A-S","K-D","10-C","J-H")));// A-S
+        System.out.println(obj.FindTheHighestCard(Arrays.asList("2-H","3-D","4-C","5-S","6-H"))); // 6-H
+        System.out.println(obj.FindTheHighestCard(Arrays.asList("A-H","A-D","K-C","Q-S","J-H"))); // A-D
+        System.out.println(obj.FindTheHighestCard(Arrays.asList("10-H","J-D","Q-C","K-S","A-H"))); // A-H
+
+    }
+
+
+}
