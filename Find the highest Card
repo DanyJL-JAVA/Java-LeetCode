@@ -56,6 +56,15 @@ public class Main {
         System.out.println(obj.FindTheHighestCard(Arrays.asList("A-H","A-D","K-C","Q-S","J-H"))); // A-D
         System.out.println(obj.FindTheHighestCard(Arrays.asList("10-H","J-D","Q-C","K-S","A-H"))); // A-H
 
+
+//        "2","3","4","5","6","7","8","9","10","J","Q","K","A"
+//        "H","D","C","S"
+
+//        "5-H","A-S","K-D","10-C","J-H" // A-S
+//        "2-H","3-D","4-C","5-S","6-H" // 6-H
+//        "A-H","A-D","K-C","Q-S","J-H" // A-D
+//        "10-H","J-D","Q-C","K-S","A-H" // A-H
+
     }
 
 
