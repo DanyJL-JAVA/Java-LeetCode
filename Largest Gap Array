@@ -1,0 +1,54 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.sql.*;
+import java.util.Iterator;
+
+
+public class Main {
+
+
+    public static Integer LargestGapArray(Integer[] arr) {
+
+
+        Integer min = Integer.MAX_VALUE;
+        Integer max = Integer.MIN_VALUE;
+
+        for(int i = 0 ; i < arr.length; i++){
+
+
+            min = Math.min(min, arr[i]);
+            max = Math.max(max, arr[i]);
+
+        }
+
+        return max - min;
+
+    }
+
+
+    public static void main(String[] args) {
+
+
+        Main obj = new Main();
+
+//        Integer[] arr = {3, 10, 6, 7};
+//        Output : 7
+
+        Integer[] arr = {-3, -1, 6, 7, 0};
+//        Output : 10
+
+
+        Integer result = obj.LargestGapArray(arr);
+
+        System.out.println(result);
+
+
+    }
+
+
+}
+
+
