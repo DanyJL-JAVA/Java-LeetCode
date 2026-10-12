@@ -1,0 +1,57 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.sql.*;
+import java.util.Iterator;
+
+
+public class Main {
+
+
+    public static boolean IsPrime(Integer num){
+
+
+        if(num < 2){
+
+
+            return false;
+
+        }
+
+
+        for(int i = 2; i <= Math.sqrt(num); i++){
+
+
+            if(num % i == 0 ){
+
+                return false;
+
+
+            }
+
+
+        }
+
+
+        return true;
+    }
+
+
+    public static void main(String[] args) {
+
+
+        Integer[] PrimeNumbers = IntStream.rangeClosed(2,101).boxed().filter(Main::IsPrime).toArray(Integer[]::new);
+
+        System.out.println(Arrays.toString(PrimeNumbers));
+
+        // OUTPUT : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101]
+
+
+    }
+
+
+}
+
+
