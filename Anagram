@@ -1,0 +1,48 @@
+import com.sun.security.jgss.GSSUtil;
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.sql.*;
+import java.util.Iterator;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Traditional Way
+
+//        String s1 = "Listen";
+//        String s2 = "Silent";
+//
+//        char[] a = s1.toUpperCase().toCharArray();
+//        char[] b = s2.toUpperCase().toCharArray();
+//
+//        Arrays.sort(a);
+//        Arrays.sort(b);
+//
+//        System.out.println(Arrays.equals(a,b));
+
+// Java 8
+
+        String s1 = "Listen";
+        String s2 = "Silent";
+
+
+        boolean result = s1.chars().mapToObj(c -> (char) c).map(Object::toString).map(String::toUpperCase).sorted(Comparator.naturalOrder())
+                .collect(Collectors.joining()).equals(s2.chars().mapToObj(c -> (char) c).map(Object::toString).map(String::toUpperCase).sorted(Comparator.naturalOrder())
+                        .collect(Collectors.joining()));
+
+        System.out.println(result);
+
+
+    }
+
+
+}
+
+
