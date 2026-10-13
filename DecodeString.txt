@@ -64,7 +64,7 @@ public class DecodeAString{
 		// Decode a String 
 		
 
-		String s = "3[a]2[bc]";
+		String s = "3[a]2[bc]"; // OUTPUT : aaabcbc
 		
 		
 		String str = obj.getDecoded(s);
