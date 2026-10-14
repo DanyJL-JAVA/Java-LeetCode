@@ -76,7 +76,17 @@ public class Main {
 
         Main obj = new Main();
 
-        String s = "abcabcbb";
+
+        String s = "geeksforgeeks";
+//        Output: 7
+
+//        String s = "aaa";
+//        Output: 1
+
+//        String s = "abcdefabcbb";
+//        Output: 6
+
+//        String s = "abcabcbb";
 //        Output: 3
 
 //        String s = "bbbbb";
