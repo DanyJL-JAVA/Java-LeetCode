@@ -1,0 +1,98 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+
+public class Main {
+
+    public static Integer longestSubStringWithNonRepeatingCharacters(String s) {
+
+        // Works in the Algo rithm in Sliding Window Mechanism
+
+        Map<Character, Integer> have = new HashMap<Character, Integer>();
+        Map<Character, Integer> Need = new HashMap<Character, Integer>();
+
+        Integer min = Integer.MAX_VALUE;
+        Integer max = Integer.MIN_VALUE;
+
+
+        Integer start = 0;
+        Integer end = 0;
+        String str = "";
+        Integer result = 0;
+
+
+        while (end < s.length()) {
+
+            char a = s.charAt(end);
+
+            //
+
+            if (!Need.containsKey(a)) {
+
+                Need.put(a, 0);
+
+            }
+
+            Need.put(a, Need.get(a) + 1);
+
+            //
+
+
+            if (Need.get(a) == 2) {
+
+                Need.clear();
+                start += 1;
+                end = start;
+                System.out.println(str);
+                max = Math.max(max, str.length());
+                str = "";
+                continue;
+
+
+            }
+
+            str += a;
+
+
+            end += 1;
+
+
+        }
+
+
+        return max;
+
+
+    }
+
+
+    public static void main(String[] args) {
+
+
+        Main obj = new Main();
+
+        String s = "abcabcbb";
+//        Output: 3
+
+//        String s = "bbbbb";
+//        Output: 1
+
+//        String s = "pwwkew";
+//        Output: 3
+
+        Integer result = obj.longestSubStringWithNonRepeatingCharacters(s);
+
+        System.out.println(result);
+
+
+    }
+
+
+}
+
+
