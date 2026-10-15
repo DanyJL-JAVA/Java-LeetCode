@@ -1,0 +1,74 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+
+public class Main {
+
+    public static boolean Plaindrome(String s) {
+
+
+        Stack<Character> stack = new Stack<Character>();
+        Queue<Character> queue = new LinkedList<Character>();
+
+        for (char a : s.toCharArray()) {
+
+            stack.push(a);
+            queue.add(a);
+
+        }
+
+
+        while (stack.size() > 0 && queue.size() > 0) {
+
+
+            if (!stack.pop().equals(queue.remove())) {
+
+
+                return false;
+
+            }
+
+
+        }
+
+
+        return true;
+
+
+    }
+
+    public static void main(String[] args) {
+
+        Main obj = new Main();
+
+        String s = "radar";
+//        String s = "madam";
+
+
+        boolean result = obj.Plaindrome(s);
+
+        System.out.println("Traditional Way => " + result);
+
+        /// Java 8
+
+        boolean result1 = IntStream.rangeClosed(0,s.length() / 2).allMatch(i -> s.charAt(i) == s.charAt(s.length() - 1 - i));
+
+
+        System.out.println("Java8 => " + result1);
+
+
+
+        /// Java 8
+
+
+
+    }
+
+
+}
+
