@@ -1,0 +1,85 @@
+import java.util.*;
+import java.util.stream.*;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.sql.*;
+
+
+public class Main {
+
+    public static Integer[][] MergeInterval(Integer[][] arr) {
+
+
+        Arrays.sort(arr,(a,b) -> a[0] - b[0]);
+
+        List<Integer[]> arrlst = new ArrayList<Integer[]>();
+
+        Integer Index = 0;
+
+
+        while (Index < arr.length) {
+
+            Integer CurrentLeft = arr[Index][0];
+            Integer tempRight = arr[Index][1];
+
+            while (Index + 1 < arr.length && tempRight >= arr[Index + 1][0]) {
+
+
+                tempRight = arr[Index + 1][1];
+                Index += 1;
+
+            }
+
+            Integer CurrentRight = tempRight;
+
+            arrlst.add(new Integer[]{CurrentLeft, CurrentRight});
+
+            Index += 1;
+
+        }
+
+        Integer[][] array = new Integer[arrlst.size()][2];
+        Index = 0;
+
+
+        for (Integer[] a : arrlst) {
+
+            array[Index++] = a;
+
+        }
+
+
+        return array;
+
+    }
+
+
+    public static void main(String[] args) {
+
+
+        Main obj = new Main();
+
+
+        Integer[][] arr = {{1,3}, {2,6},{8,10},{15,18}};
+//        Output: {{1,6},{8,10},{15,18}};
+
+
+//        Integer[][] arr = {{1,4},{4,5}};
+//        Output: [[1,5]]
+
+
+//        Integer[][] arr = {{4, 7}, {1, 4}};
+        // Output: [[1,7]]
+
+        Integer[][] array = obj.MergeInterval(arr);
+
+        System.out.println(Arrays.deepToString(array));
+
+
+    }
+
+
+}
+
