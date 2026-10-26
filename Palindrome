@@ -22,7 +22,7 @@ public class Main {
 
         }
 
-
+// *note : keep in mind that (stack.size() >= 0) -> This one is wrong as we are looping to find the size to become zero. to break from the loop. So, Correct one is not to decalre the '=' symbol. Correct = (stack.size() > 0);
         while (stack.size() > 0 && queue.size() > 0) {
 
 
