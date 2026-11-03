@@ -26,3 +26,25 @@ public class Main {
 	}
 
 }
+
+
+// * NOTE : Regex Expression
+
+// \\ => Defines "All".
+// s+ => empty Space.
+// "" => Removing
+// [a-z] => a to z
+// ^ => Not
+// [^a-z] => Only accepts small alphabet letters.
+// Part : 1 (.)
+// . = any single character
+// () = capture that character into Group 1
+// Part : 2 (?=.*\\1) 
+// ?= = Think of it as: "Before I accept this match, let me look ahead and verify something."
+// . = any character
+// * = zero or more times
+// \1 = Match whatever was captured in Group 1.
+
+
+
+
