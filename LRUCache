@@ -8,16 +8,24 @@ import java.util.Iterator;
 /*Node*/
 
 class Node {
+	
+	//*Note:
+	// Default access Modifier. This class can be accessed outside of the class. only if the package is same.
+	// public access Modifier.Can be accessible even is the Package is different.
 
 	public int key; // Public --> Access modifier to be used globally
 	public char value;
 
-	public Node(int key, char value) {
+	public Node(int key, char value) { // Constructor
 
 		this.key = key;
 		this.value = value;
 
 	}
+	
+	
+	//*Note : If there is No getter() & setter() methods and Constructor is present. We Can only get the Data (Like : Node node = new Node(key, value);)   
+	
 
 }
 
@@ -25,7 +33,7 @@ class Node {
 
 /* LRUCache */
 
-class LRUCache {
+class LRUCache { //  Least Recently Used Cache
 
 	private int capacity; // Maintains two Capacity
 	private Set<Node> cache = new LinkedHashSet<Node>(); // Maintains Order
@@ -42,7 +50,7 @@ class LRUCache {
 	//
 
 	// 2
-	public int get(int key) {
+	public int get(int key) { // Simulate as like getter() method with few more inner Functionality.
 
 		if (!KeyToNode.containsKey(key)) {
 
@@ -50,6 +58,7 @@ class LRUCache {
 
 		}
 
+		// (IF) Condition is Not Satisfied, then, compiler will Automatically start to read here.
 		Node node = KeyToNode.get(key); // the value inside the Map putting into --> object of Node --> Which has key
 										// and value
 
@@ -61,7 +70,7 @@ class LRUCache {
 	//
 
 	// 3
-	public void put(int key, char value) {
+	public void put(int key, char value) { // Simulate as like setter() method with few more inner Functionality.
 
 		if (KeyToNode.containsKey(key)) { // Updating the Value of an Key, if the given Inut Key is already declared for
 											// any node Present inside the Key. This condition is for updating the hashmap (i.e) -> KeytoNode.
@@ -74,7 +83,7 @@ class LRUCache {
 
 		//
 
-		// if already the cache is fullm with capacity of Two = 2
+		// if already the cache is full with capacity of Two = 2
 		if (cache.size() == capacity) {
 
 			Node lastNode = cache.iterator().next(); // Get the least recently used node.
@@ -84,7 +93,7 @@ class LRUCache {
 		//
 
 
-		// This below is an Common Insertion od values.
+		// This below is an Common Insertion of values.
 		Node node = new Node(key, value);
 		cache.add(node);
 		KeyToNode.put(key, node);
@@ -116,6 +125,8 @@ public class Main {
 		// Input =
 		// ["LRUCache","put","put","get","put","get","put","get","get","get"]
 		// [2], [1,A], [2,B], [1],[3,C], [2], [4,D], [1] , [3] , [4] ]
+		
+		// output = 1:A | 2 :* | 1 :* | 3 :C | 4 :D |
 
 		// MRU //LRU
 //		[1,a]  [2,b]
@@ -123,9 +134,11 @@ public class Main {
 //		[3,c]  [1,a] -> [1,a] [2,*]
 //		[4,D]  [3,c] -> [1,a][2,*][1,*]
 //		[3,C]  [4,D] -> [1,a][2,*][1,*][3,C]
-//		[4,D]  [3,C] -> [1,a][2,*][1,*][3,C][4,D]	
-
+//		[4,D]  [3,C] -> [1,a][2,*][1,*][3,C][4,D]
+		
 		// output = 1:A | 2 :* | 1 :* | 3 :C | 4 :D |
+
+		
 
 	}
 
