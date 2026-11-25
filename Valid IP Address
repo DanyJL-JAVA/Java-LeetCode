@@ -140,10 +140,10 @@ public class Main {
 
 		Main obj = new Main();
 
-		// IPV4 --> 192.168.0.1
-		// IPV6 --> 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-		// Neither --> 256.256.256.256
-		String s = "192.168.0.1";
+				String s = "192.168.0.1"; // IPV4
+//		String s = "2001:0db8:85a3:0000:0000:8a2e:0370:7334"; // IPV6
+//		String s = "256.256.256.256"; // Neither
+
 
 		String result = obj.checkValidIp(s);
 
