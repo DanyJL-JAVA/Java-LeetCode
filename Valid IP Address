@@ -14,7 +14,7 @@ public class Main {
 
 		}
 
-		String[] segments = s.split("\\.");
+		String[] segments = s.split("\\."); // \\ -> This Will Count all the (.) in the String.
 
 		// 2
 		if (segments.length == 0 || segments.length > 4) {
@@ -72,7 +72,7 @@ public class Main {
 
 		}
 
-		String[] segments = s.split("\\:");
+		String[] segments = s.split("\\:");  // \\ -> This Will Count all the (.) in the String.
 
 		// 2
 		if (segments.length == 0 || segments.length > 8) {
